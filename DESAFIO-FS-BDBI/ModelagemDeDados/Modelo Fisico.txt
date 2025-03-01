@@ -1,0 +1,79 @@
+CREATE TABLE Vendedor (
+    cpf_vendedor INTEGER PRIMARY KEY,
+    nome VARCHAR(100),
+    genero VARCHAR(10),
+    data_nascimento DATE
+);
+
+CREATE TABLE Cliente (
+    cpf_cliente INTEGER PRIMARY KEY,
+    nome VARCHAR(100),
+    genero VARCHAR(10),
+    data_nascimento DATE,
+    endereco VARCHAR(255)
+);
+
+CREATE TABLE Gerente (
+    cpf_gerente INTEGER PRIMARY KEY,
+    nome VARCHAR(100),
+    genero VARCHAR(10),
+    data_nascimento DATE
+);
+
+CREATE TABLE Fornecedor (
+    id_fornecedor INTEGER PRIMARY KEY,
+    nome VARCHAR(100),
+    cnpj BIGINT UNIQUE,
+    endereco VARCHAR(255),
+    contato VARCHAR(20)
+);
+
+CREATE TABLE Produto (
+    id_produto INTEGER PRIMARY KEY,
+    nome VARCHAR(100),
+    tipo VARCHAR(50),
+    preco FLOAT
+);
+
+CREATE TABLE Pedido (
+    id_pedido INTEGER PRIMARY KEY,
+    id_produto INTEGER,
+    cpf_vendedor INTEGER,
+    cpf_cliente INTEGER,
+    tipo_pagamento VARCHAR(50),
+    data_venda DATE,
+    FOREIGN KEY (id_produto) REFERENCES Produto(id_produto),
+    FOREIGN KEY (cpf_vendedor) REFERENCES Vendedor(cpf_vendedor),
+    FOREIGN KEY (cpf_cliente) REFERENCES Cliente(cpf_cliente)
+);
+
+CREATE TABLE Estoque (
+    id_produto INTEGER,
+    quantidade_produto INTEGER,
+    data_reabastecimento DATE,
+    cpf_gerente INTEGER,
+    PRIMARY KEY (id_produto, cpf_gerente),
+    FOREIGN KEY (id_produto) REFERENCES Produto(id_produto),
+    FOREIGN KEY (cpf_gerente) REFERENCES Gerente(cpf_gerente)
+);
+
+-- Relacionamento de supervisão entre Gerente e Vendedor
+CREATE TABLE Supervisao (
+    cpf_gerente INTEGER,
+    cpf_vendedor INTEGER,
+    PRIMARY KEY (cpf_gerente, cpf_vendedor),
+    FOREIGN KEY (cpf_gerente) REFERENCES Gerente(cpf_gerente),
+    FOREIGN KEY (cpf_vendedor) REFERENCES Vendedor(cpf_vendedor)
+);
+
+-- Relacionamento de fornecimento entre Fornecedor e Produto
+CREATE TABLE Fornece (
+    id_fornecedor INTEGER,
+    id_produto INTEGER,
+    preco_compra FLOAT,
+    quantidade_fornecida INTEGER,
+    data_entrega DATE,
+    PRIMARY KEY (id_fornecedor, id_produto),
+    FOREIGN KEY (id_fornecedor) REFERENCES Fornecedor(id_fornecedor),
+    FOREIGN KEY (id_produto) REFERENCES Produto(id_produto)
+);
