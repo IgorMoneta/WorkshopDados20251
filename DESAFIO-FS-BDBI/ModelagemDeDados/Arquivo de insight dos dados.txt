@@ -1,0 +1,54 @@
+Análise das Consultas Realizadas no Banco de Dados
+
+As consultas realizadas no banco de dados permitem obter informações valiosas sobre a estrutura e os dados armazenados. Abaixo está a descrição detalhada do que cada consulta retorna e os insights que podem ser extraídos.
+
+1. Consultas de Agregação e Agrupamento
+
+Contagem de vendedores por gênero
+A consulta determina a quantidade de vendedores do sexo masculino e feminino cadastrados no sistema. Isso permite entender melhor a composição da equipe de vendas.
+
+Média de idade dos gerentes
+Aqui é calculada a média de idade dos gerentes da empresa. Essa informação pode ser utilizada para avaliar o perfil de liderança da organização e sua experiência.
+
+Quantidade de clientes por gênero
+Essa consulta retorna quantos clientes do sexo masculino e feminino estão registrados. Isso auxilia na formulação de estratégias de marketing e atendimento personalizado.
+
+Número total de produtos por tipo
+Permite identificar quantos produtos estão cadastrados para cada categoria. Isso é útil para o controle de estoque e para entender quais tipos de produtos têm maior variedade.
+
+Valor médio dos produtos no estoque
+Essa consulta calcula o preço médio dos produtos cadastrados. Com isso, é possível determinar a faixa de preço predominante e planejar estratégias de precificação.
+
+Quantidade total de produtos em estoque
+Soma a quantidade total de produtos atualmente disponíveis. Isso auxilia na análise de abastecimento e identifica a necessidade de novas compras.
+
+Total de pedidos por tipo de pagamento
+Essa consulta exibe a quantidade de pedidos agrupados por forma de pagamento. É essencial para entender quais métodos são mais utilizados e avaliar a necessidade de diversificar opções de pagamento.
+
+Número total de fornecedores cadastrados
+Determina quantos fornecedores estão registrados no banco de dados, ajudando a avaliar a diversidade e a dependência de suprimento da empresa.
+
+2. Consultas com JOIN
+
+Obter o nome do cliente que fez cada pedido
+Essa consulta relaciona os pedidos realizados com os clientes correspondentes. Com isso, é possível rastrear quem realizou cada compra, facilitando análises de comportamento de consumo.
+
+Exibir a quantidade de cada produto no estoque
+Relaciona a quantidade de produtos no estoque com os dados dos produtos, permitindo uma análise detalhada de disponibilidade e datas de reabastecimento.
+
+3. Conclusão
+
+As consultas realizadas proporcionam uma visão abrangente dos dados do sistema, permitindo insights sobre:
+
+A composição e idade média da equipe de vendas e gestão.
+
+O perfil demográfico dos clientes e sua distribuição por gênero.
+
+O volume e a distribuição dos produtos no estoque.
+
+Os métodos de pagamento mais utilizados.
+
+A diversificação dos fornecedores cadastrados.
+
+Essas informações podem ser utilizadas para aprimorar estratégias de vendas, gestão de estoque e atendimento ao cliente, garantindo uma operação mais eficiente e eficaz.
+
