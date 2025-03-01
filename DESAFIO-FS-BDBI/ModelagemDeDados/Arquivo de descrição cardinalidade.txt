@@ -1,0 +1,65 @@
+1.1. Vendedor
+
+Chave Primária: cpf_vendedor
+
+Relacionamentos:
+Um vendedor está associado a um gerente (1,1), mas um gerente pode supervisionar vários vendedores (1,n).
+Um vendedor pode realizar várias vendas (pedidos) (1,n), mas um pedido é feito por apenas um vendedor (1,1).
+
+1.2. Gerente
+
+Chave Primária: cpf_gerente
+
+Relacionamentos:
+Um gerente pode gerenciar vários vendedores (1,n), mas um vendedor possui apenas um gerente (1,1).
+Um gerente pode estar vinculado ao estoque (1,n), supervisionando o reabastecimento de vários produtos.
+
+1.3. Cliente
+
+Chave Primária: cpf_cliente
+
+Relacionamentos:
+Um cliente pode realizar vários pedidos (1,n), mas cada pedido pertence a apenas um cliente (1,1).
+
+1.4. Pedido (Tabela Fato)
+
+Chave Primária: id_produto, cpf_vendedor, cpf_cliente
+
+Relacionamentos:
+Um pedido deve conter um único produto (1,1), mas um produto pode ser vendido em vários pedidos (1,n).
+Um pedido é registrado por um único vendedor (1,1), mas um vendedor pode registrar múltiplos pedidos (1,n).
+Um pedido é realizado por um único cliente (1,1), mas um cliente pode fazer múltiplos pedidos (1,n).
+
+1.5. Produto (Tabela Dimensão)
+
+Chave Primária: id_produto
+
+Relacionamentos:
+Um produto pode estar presente em vários pedidos (1,n), mas um pedido contém apenas um produto (1,1).
+Um produto é fornecido por um único fornecedor (1,1), mas um fornecedor pode fornecer vários produtos (1,n).
+Um produto pode ser armazenado no estoque (1,1), e o estoque pode conter múltiplos produtos (1,n).
+
+1.6. Fornecedor (Tabela Dimensão)
+
+Chave Primária: id_fornecedor
+
+Relacionamentos:
+Um fornecedor pode fornecer vários produtos (1,n), mas cada produto tem apenas um fornecedor (1,1).
+
+1.7. Estoque (Tabela Fato)
+
+Chave Primária: id_produto, cpf_gerente
+
+Relacionamentos:
+O estoque contém múltiplos produtos (1,n), mas um produto pode ter apenas um registro no estoque por vez (1,1).
+O gerente gerencia o estoque (1,n), podendo supervisionar o reabastecimento de diversos produtos.
+
+2. Classificação das Tabelas em Fato e Dimensão
+Tabelas Fato:
+
+Pedido: Representa os eventos de venda, contendo informações sobre os produtos vendidos, clientes, vendedores e data de venda.
+Estoque: Armazena as movimentações de produtos, controlando a quantidade disponível e os reabastecimentos.
+
+Tabelas Dimensão:
+
+Vendedor, Gerente, Cliente, Produto, Fornecedor: Contêm atributos descritivos e categóricos para análises das tabelas fato.
